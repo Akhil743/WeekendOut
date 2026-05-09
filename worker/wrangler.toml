@@ -1,0 +1,17 @@
+name = "weekendout-recommend"
+main = "src/index.ts"
+compatibility_date = "2025-01-15"
+
+# KV cache for prefs->ranked-results (free tier: 100k reads/day, 1k writes/day).
+[[kv_namespaces]]
+binding = "REC_CACHE"
+id = "a6bc19f29e8140d8bd314f43fb2c11d4"
+
+[vars]
+# Public, non-secret config:
+FIREBASE_PROJECT_ID = "weekendout-eaaff"
+
+# Secrets — set with `wrangler secret put <NAME>`. Never commit values.
+#   GEMINI_API_KEY      — from https://aistudio.google.com/app/apikey (free)
+#   FIREBASE_API_KEY    — public Firebase Web API key for REST queries
+#   APP_CHECK_PROJECT_NUMBER — numeric project number, used to verify App Check JWT

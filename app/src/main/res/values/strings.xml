@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WeekendOut</string>
+
+    <!-- Firebase Web OAuth client ID. Get from Firebase Console > Authentication >
+         Sign-in method > Google > Web SDK configuration > Web client ID.
+         Looks like: 300412360574-xxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com -->
+    <string name="default_web_client_id" translatable="false">300412360574-jcq47s9lrk3fg80060qv853roe3i1m7b.apps.googleusercontent.com</string>
+
+    <!-- Sign-in prompt -->
+    <string name="signin_title">Save across devices</string>
+    <string name="signin_subtitle">Sign in with Google so your saved places stick around when you reinstall, and sync to other devices you sign into.</string>
+    <string name="signin_cta">Continue with Google</string>
+    <string name="signin_skip">Maybe later</string>
+
+    <!-- Planner -->
+    <string name="planner_title">Plan a weekend</string>
+    <string name="planner_subtitle">Tell us the vibe — we\'ll do the picking.</string>
+    <string name="cta_recommend">Find places</string>
+
+    <!-- Sections -->
+    <string name="section_when">When</string>
+    <string name="section_who">Who\'s going</string>
+    <string name="section_vibe">Vibe</string>
+    <string name="section_crowd">Crowd</string>
+    <string name="section_temp">Climate</string>
+    <string name="section_stay">Need an overnight stay?</string>
+    <string name="section_budget">Budget</string>
+</resources>

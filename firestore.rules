@@ -1,0 +1,45 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helpers
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    // Curated places — public read.
+    // The Cloudflare Worker queries this via Firestore REST with just the Web
+    // API key (no user JWT), so the read must be unauthenticated. Places data
+    // is hand-curated and non-sensitive. App Check on the Android client and a
+    // future App Check verification on the Worker still rate-limit abuse.
+    // Writes happen only via the seed script using the admin SDK (rules bypassed).
+    match /places/{placeId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // User docs — only the owner can read/write their own doc & history.
+    match /users/{uid} {
+      allow read, write: if isOwner(uid);
+
+      match /history/{histId} {
+        allow read, write: if isOwner(uid);
+      }
+    }
+
+    // Telemetry — clients can create their own request rows but cannot read others'.
+    match /recRequests/{reqId} {
+      allow create: if isSignedIn()
+                    && request.resource.data.uid == request.auth.uid;
+      allow read, update, delete: if false;
+    }
+
+    // Default deny.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

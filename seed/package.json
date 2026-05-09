@@ -1,0 +1,19 @@
+{
+  "name": "weekendout-seed",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "seed": "ts-node --esm seedPlaces.ts",
+    "seed:emulator": "FIRESTORE_EMULATOR_HOST=localhost:8080 ts-node --esm seedPlaces.ts"
+  },
+  "dependencies": {
+    "csv-parse": "^5.5.6",
+    "firebase-admin": "^12.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}

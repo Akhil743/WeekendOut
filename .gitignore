@@ -1,0 +1,40 @@
+# --- Android / Gradle ---
+*.iml
+.gradle/
+local.properties
+.idea/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+release/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# --- Keystores & signing (NEVER commit) ---
+*.jks
+*.keystore
+keystore.properties
+!keystore.properties.example
+
+# --- Node / Worker ---
+node_modules/
+*.log
+.wrangler/
+.dev.vars
+.env
+.env.local
+
+# --- Firebase ---
+google-services.json
+firebase-debug.log
+.firebase/
+.firebaserc.local
+
+# --- Misc ---
+.DS_Store
+*.swp
+.vscode/
