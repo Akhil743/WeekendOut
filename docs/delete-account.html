@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Delete your WeekendOut account & data</title>
+<style>
+  :root { color-scheme: light; }
+  body { font: 16px/1.55 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+         max-width: 720px; margin: 40px auto; padding: 0 20px; color: #1a1c19; }
+  h1 { margin: 0 0 8px; font-size: 28px; }
+  h2 { margin: 32px 0 8px; font-size: 18px; }
+  p { margin: 8px 0 12px; }
+  ol { padding-left: 22px; }
+  ol li { margin: 12px 0; }
+  small { color: #5a625a; }
+  code { background: #f1f3ef; padding: 1px 6px; border-radius: 4px; }
+  a { color: #2e7d5c; }
+  .step-box { background: #f1f3ef; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  td, th { padding: 8px 10px; border-bottom: 1px solid #e3e6df; text-align: left; vertical-align: top; }
+  th { font-weight: 600; }
+</style>
+</head>
+<body>
+  <h1>Delete your WeekendOut account & data</h1>
+  <small>Last updated: 9 May 2026 · Developer: Akhil Raj S · App: WeekendOut</small>
+
+  <p>
+    This page explains how to permanently delete your WeekendOut account and the
+    data WeekendOut has stored against it.
+  </p>
+
+  <h2>Steps to request deletion</h2>
+
+  <div class="step-box">
+    <ol>
+      <li>
+        <strong>Email <a href="mailto:akhilrajsanthosh@gmail.com?subject=WeekendOut%20account%20deletion">
+        akhilrajsanthosh@gmail.com</a></strong> with the subject line
+        <code>WeekendOut account deletion</code>.
+      </li>
+      <li>
+        In the body, include the <strong>email address you used to sign in to
+        WeekendOut with Google</strong> (so we can locate your record).
+      </li>
+      <li>
+        We will reply within <strong>7 days</strong> confirming that your
+        account and all associated data have been deleted from our systems.
+      </li>
+    </ol>
+  </div>
+
+  <p>
+    If you have only used the app anonymously (you never tapped "Continue with
+    Google" on the save prompt), there is nothing tied to a personal identifier
+    on our side. <strong>Uninstalling the app from your phone</strong> will
+    remove the only state about you that exists.
+  </p>
+
+  <h2>What gets deleted</h2>
+
+  <table>
+    <tr><th>Data</th><th>What happens on deletion</th></tr>
+    <tr>
+      <td>Your Google sign-in linkage (email + display name)</td>
+      <td>Permanently deleted from Firebase Authentication</td>
+    </tr>
+    <tr>
+      <td>Saved places list</td>
+      <td>Permanently deleted from Firestore</td>
+    </tr>
+    <tr>
+      <td>Last-used planner preferences</td>
+      <td>Permanently deleted from Firestore</td>
+    </tr>
+    <tr>
+      <td>Recommendation history (if any)</td>
+      <td>Permanently deleted from Firestore</td>
+    </tr>
+  </table>
+
+  <h2>What is kept</h2>
+
+  <table>
+    <tr><th>Data</th><th>Why</th><th>How long</th></tr>
+    <tr>
+      <td>Anonymized request logs (no email, no UID)</td>
+      <td>Operational debugging and abuse prevention</td>
+      <td>30 days, then auto-purged</td>
+    </tr>
+    <tr>
+      <td>Aggregated, non-identifying counts (e.g. "X recommendations served today")</td>
+      <td>Capacity planning</td>
+      <td>Indefinite, but not tied to any user</td>
+    </tr>
+  </table>
+
+  <p>
+    Nothing personally identifying is retained after deletion. We do not sell or
+    share user data with third parties; see our
+    <a href="privacy.html">Privacy Policy</a> for full details.
+  </p>
+
+  <h2>Questions</h2>
+
+  <p>
+    If you have any questions about this process, email
+    <a href="mailto:akhilrajsanthosh@gmail.com">akhilrajsanthosh@gmail.com</a>
+    and we'll get back to you.
+  </p>
+</body>
+</html>
