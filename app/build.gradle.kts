@@ -126,7 +126,6 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.appcheck.playintegrity)
     debugImplementation(libs.firebase.appcheck.debug)
-    implementation(libs.firebase.analytics)
     implementation(libs.play.services.auth)
 
     // Google Sign-In via Credential Manager
