@@ -1,5 +1,6 @@
 package com.akhil.weekendout.ui.results
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -104,7 +105,11 @@ private fun ResultCard(card: RecommendedCard, onClick: () -> Unit) {
             AsyncImage(
                 model = card.place.photo_urls.firstOrNull(),
                 contentDescription = card.place.name,
-                modifier = Modifier.fillMaxWidth().aspectRatio(16f / 9f).clip(RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp)),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(16f / 9f)
+                    .clip(RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp))
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
                 contentScale = ContentScale.Crop
             )
             Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {

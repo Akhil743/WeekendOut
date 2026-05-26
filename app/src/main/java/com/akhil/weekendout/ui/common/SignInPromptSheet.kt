@@ -65,8 +65,9 @@ fun SignInPromptSheet(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    if (isLoading) "Signing in…"
-                    else stringResource(R.string.signin_cta)
+                    stringResource(
+                        if (isLoading) R.string.signin_cta_loading else R.string.signin_cta
+                    )
                 )
             }
             TextButton(

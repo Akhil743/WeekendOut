@@ -18,6 +18,7 @@ import javax.inject.Inject
 
 data class DetailUiState(
     val place: Place? = null,
+    val loadError: String? = null,
     val isSaved: Boolean = false,
     val saving: Boolean = false,
     val showSignInPrompt: Boolean = false,
@@ -37,9 +38,20 @@ class DetailViewModel @Inject constructor(
     val state: StateFlow<DetailUiState> = _state
 
     fun load(id: String) {
+        _state.update { it.copy(loadError = null) }
         viewModelScope.launch {
-            val place = placeRepo.getOne(id)
-            _state.update { it.copy(place = place) }
+            runCatching { placeRepo.getOne(id) }
+                .onSuccess { place ->
+                    _state.update {
+                        it.copy(
+                            place = place,
+                            loadError = if (place == null) "We couldn't find that place." else null
+                        )
+                    }
+                }
+                .onFailure { e ->
+                    _state.update { it.copy(loadError = "Couldn't load this place. ${e.message ?: ""}".trim()) }
+                }
         }
         viewModelScope.launch {
             userData.observeSavedIds().collect { ids ->

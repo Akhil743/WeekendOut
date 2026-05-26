@@ -9,6 +9,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import java.io.IOException
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 sealed interface ResultsState {
@@ -42,7 +45,14 @@ class ResultsViewModel @Inject constructor(
                     _state.value = if (cards.isEmpty()) ResultsState.NoMatches
                     else ResultsState.Loaded(cards)
                 }
-                .onFailure { _state.value = ResultsState.Error(it.message ?: "Something went wrong.") }
+                .onFailure { _state.value = ResultsState.Error(friendlyError(it)) }
         }
+    }
+
+    private fun friendlyError(t: Throwable): String = when (t) {
+        is UnknownHostException -> "No internet connection. Check your connection and try again."
+        is SocketTimeoutException -> "The request timed out. Try again."
+        is IOException -> "Network error. Try again."
+        else -> "Couldn't fetch picks. Try again."
     }
 }

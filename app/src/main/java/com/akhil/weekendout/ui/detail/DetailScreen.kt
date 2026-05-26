@@ -2,6 +2,7 @@ package com.akhil.weekendout.ui.detail
 
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -103,7 +104,23 @@ fun DetailScreen(
         val place = state.place
         if (place == null) {
             Box(modifier = Modifier.fillMaxSize().padding(padding), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator()
+                if (state.loadError != null) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth().padding(24.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        Text("Can't open this place", style = MaterialTheme.typography.titleLarge)
+                        Text(
+                            state.loadError ?: "",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        Button(onClick = { vm.load(placeId) }) { Text("Retry") }
+                    }
+                } else {
+                    CircularProgressIndicator()
+                }
             }
             return@Scaffold
         }
@@ -132,7 +149,7 @@ fun DetailScreen(
                     },
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Icon(Icons.Outlined.Map, contentDescription = null)
+                    Icon(Icons.Outlined.Map, contentDescription = "Open in Maps")
                     Text("  Open in Maps")
                 }
                 Button(
@@ -161,7 +178,8 @@ private fun PhotoPager(place: Place) {
                 modifier = Modifier
                     .fillMaxWidth(0.85f)
                     .aspectRatio(16f / 10f)
-                    .clip(RoundedCornerShape(16.dp)),
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
                 contentScale = ContentScale.Crop
             )
         }

@@ -1,5 +1,6 @@
 package com.akhil.weekendout.ui.saved
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -88,7 +89,10 @@ private fun SavedList(places: List<Place>, onOpen: (String) -> Unit) {
                     AsyncImage(
                         model = place.photo_urls.firstOrNull(),
                         contentDescription = place.name,
-                        modifier = Modifier.size(72.dp).clip(RoundedCornerShape(12.dp)),
+                        modifier = Modifier
+                            .size(72.dp)
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(MaterialTheme.colorScheme.surfaceVariant),
                         contentScale = ContentScale.Crop
                     )
                     Column(modifier = Modifier.weight(1f)) {
